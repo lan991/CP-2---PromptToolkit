@@ -1,0 +1,16 @@
+{
+  "classificacao_sentimento_mercado": [
+    {"input": "O Banco Central manteve os juros, sinalizando otimismo com a inflação.", "esperado": "OTIMISTA"},
+    {"input": "A queda nas commodities deve pressionar o Ibovespa na abertura.", "esperado": "PESSIMISTA"},
+    {"input": "O mercado aguarda a divulgação do balanço trimestral da Petrobras.", "esperado": "NEUTRO"},
+    {"input": "Indicadores de emprego vieram acima do esperado, aquecendo a economia.", "esperado": "OTIMISTA"},
+    {"input": "Incertezas políticas geram volatilidade e fuga de capital estrangeiro.", "esperado": "PESSIMISTA"}
+  ],
+  "extracao_ativos_financeiros": [
+    {"input": "Comprei PETR4 a R$35,00 e VALE3 a R$68,50.", "esperado": {"PETR4": "R$35,00", "VALE3": "R$68,50"}},
+    {"input": "A ação da WEGE3 subiu para R$42,00 hoje.", "esperado": {"WEGE3": "R$42,00"}},
+    {"input": "Vendi ITUB4 por R$29,00 ontem à tarde.", "esperado": {"ITUB4": "R$29,00"}},
+    {"input": "BBAS3 atingiu a marca histórica de R$55,00.", "esperado": {"BBAS3": "R$55,00"}},
+    {"input": "MGLU3 caiu para R$2,15 após o relatório.", "esperado": {"MGLU3": "R$2,15"}}
+  ]
+}
