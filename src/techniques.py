@@ -1,41 +1,58 @@
 from src.prompt_builder import montar_prompt, adicionar_exemplos, adicionar_cot
 
 def zero_shot(tarefa, input_usuario):
-    return montar_prompt(
+    """
+    Técnica Zero-Shot: Prompt direto e claro.
+    """
+    prompt = montar_prompt(
         instrucao=tarefa['instrucao'],
-        contexto="Você é um assistente focado em precisão técnica.",
+        contexto=tarefa['contexto'],
         input_dados=input_usuario,
         formato_output=tarefa['formato_output']
     )
+    return prompt
 
-def few_shot(tarefa, input_usuario, exemplos):
-    """Monta o prompt com 2-3 exemplos reais."""
+def few_shot(tarefa, input_usuario):
+    """
+    Técnica Few-Shot: Adiciona 2-3 exemplos reais.
+    Os exemplos vêm do dicionário da tarefa.
+    """
     prompt_base = montar_prompt(
         instrucao=tarefa['instrucao'],
-        contexto="Baseie sua resposta nos exemplos fornecidos abaixo.",
+        contexto=tarefa['contexto'],
         input_dados=input_usuario,
         formato_output=tarefa['formato_output']
     )
+    
+    exemplos = tarefa.get('exemplos_few_shot', [])
     return adicionar_exemplos(prompt_base, exemplos)
 
 def chain_of_thought(tarefa, input_usuario):
-    """Monta o prompt forçando o raciocínio passo a passo."""
+    """
+    Técnica Chain-of-Thought: Força o raciocínio explícito.
+    """
     prompt_base = montar_prompt(
         instrucao=tarefa['instrucao'],
-        contexto="Pense de forma lógica antes de responder.",
+        contexto=tarefa['contexto'],
         input_dados=input_usuario,
         formato_output=tarefa['formato_output']
     )
-    return adicionar_cot(prompt_base, tarefa['passos_cot'])
+    
+    passos = tarefa.get('passos_cot', "1. Analise os dados brutos; 2. Identifique padrões; 3. Formule a conclusão.")
+    return adicionar_cot(prompt_base, passos)
 
 def role_prompting(tarefa, input_usuario, persona):
-    """Usa um system prompt (persona) detalhado."""
+    """
+    Técnica Role Prompting: Retorna tupla (system, user).
+    Conforme Aula 07: Usa persona detalhada.
+    """
+    system_prompt = persona
+    
     user_prompt = montar_prompt(
         instrucao=tarefa['instrucao'],
-        contexto=f"Sua especialidade é: {persona['especialidade']}.",
+        contexto=tarefa['contexto'],
         input_dados=input_usuario,
         formato_output=tarefa['formato_output']
     )
-
-    system_prompt = f"Persona: {persona['nome']}. Experiência: {persona['experiencia']}. Tom de voz: {persona['tom_de_voz']}."
-    return system_prompt, user_prompt
+    
+    return (system_prompt, user_prompt)

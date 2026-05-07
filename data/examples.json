@@ -1,0 +1,32 @@
+{
+  "classificacao_sentimento_mercado": [
+    {
+      "input": "O Banco Central sinaliza corte na taxa de juros para a próxima reunião.",
+      "esperado": "POSITIVO"
+    },
+    {
+      "input": "Aumento repentino nos impostos sobre dividendos assusta investidores da B3.",
+      "esperado": "NEGATIVO"
+    },
+    {
+      "input": "Empresa mantém projeções de crescimento estáveis para o próximo biênio.",
+      "esperado": "NEUTRO"
+    }
+  ],
+  "extracao_dados_financeiros": [
+    {
+      "input": "BBAS3 fechou o dia a R$ 28,40 com queda de 0,5%.",
+      "esperado": "{\"ticker\": \"BBAS3\", \"preco_fechamento\": \"28,40\", \"variacao_percentual\": \"-0,5%\"}"
+    },
+    {
+      "input": "Ação da ABEV3 sobe 1,5% e atinge R$ 12,90 no fechamento.",
+      "esperado": "{\"ticker\": \"ABEV3\", \"preco_fechamento\": \"12,90\", \"variacao_percentual\": \"1,5%\"}"
+    }
+  ],
+  "sumarizacao_executiva": [
+    {
+      "input": "O balanço do quarto trimestre revelou um aumento de 20% na receita bruta, impulsionado pelas vendas online, embora o lucro líquido tenha sido afetado por custos logísticos elevados.",
+      "esperado": "* Alta de 20% na receita bruta\n* Crescimento puxado pelo e-commerce\n* Pressão de custos logísticos no lucro"
+    }
+  ]
+}

@@ -1,72 +1,52 @@
-# src/prompt_builder.py
-
-def limpar_texto(texto):
-    """Remove espaços extras e garante que o texto esteja limpo para o prompt."""
-    return " ".join(texto.split()) if isinstance(texto, str) else str(texto)
+import os
 
 def montar_prompt(instrucao, contexto, input_dados, formato_output):
     """
-    Monta o prompt seguindo a anatomia rigorosa da Aula 05.
-    Garante a separação clara entre blocos para evitar injeção de dados.
+    Constrói o prompt seguindo a anatomia da Aula 05.
+    Separa explicitamente instrução, contexto e dados.
     """
-    # Validação rigorosa dos componentes
     componentes = {
-        "Instrução": instrucao,
-        "Contexto": contexto,
-        "Dados": input_dados,
-        "Formato": formato_output
+        "instrução": instrucao,
+        "contexto": contexto,
+        "dados de entrada": input_dados,
+        "formato de saída": formato_output
     }
     
     for nome, valor in componentes.items():
         if not valor or str(valor).strip() == "":
-            raise ValueError(f"Erro Crítico: O componente '{nome}' está vazio e é obrigatório.")
+            raise ValueError(f"Erro: O componente '{nome}' não pode estar vazio.")
 
-    # Construção com delimitadores claros (Markdown Headers)
-    prompt = f"""### 1. OBJETIVO E INSTRUÇÃO
-{limpar_texto(instrucao)}
+    prompt_estruturado = f"""### 1. INSTRUÇÃO
+{instrucao}
 
-### 2. CONTEXTO E REGRAS
-{limpar_texto(contexto)}
+### 2. CONTEXTO
+{contexto}
 
-### 3. DADOS DE ENTRADA (INPUT)
-{limpar_texto(input_dados)}
+### 3. DADOS DE ENTRADA
+{input_dados}
 
-### 4. FORMATO DE RESPOSTA ESPERADO
-{limpar_texto(formato_output)}
-
----
-Sua resposta deve seguir estritamente o formato acima:"""
-
-    return prompt.strip()
+### 4. FORMATO DE SAÍDA ESPERADO
+{formato_output}
+"""
+    return prompt_estruturado
 
 def adicionar_exemplos(prompt_base, exemplos):
-    """
-    Implementa a técnica Few-Shot (Aula 06).
-    Adiciona demonstrações de padrão de entrada e saída.
-    """
-    if not exemplos or not isinstance(exemplos, list):
+    if not exemplos:
         return prompt_base
-
-    secao_exemplos = "\n\n### 5. EXEMPLOS DE REFERÊNCIA (FEW-SHOT)\n"
+        
+    secao_exemplos = "\n### 5. EXEMPLOS DE REFERÊNCIA (FEW-SHOT)\n"
     for i, ex in enumerate(exemplos, 1):
-        secao_exemplos += f"Exemplo {i}:\n- Entrada: {ex.get('input')}\n- Saída: {ex.get('output')}\n"
+        entrada = ex.get('input', 'N/A')
+        saida = ex.get('esperado', 'N/A')
+        secao_examples += f"Exemplo {i}:\nEntrada: {entrada}\nSaída: {saida}\n---\n"
     
     return prompt_base + secao_exemplos
 
-def adicionar_cot(prompt_base, passos):
-    """
-    Implementa Chain of Thought (Aula 07).
-    Força o modelo a seguir um caminho lógico antes da resposta final.
-    """
-    if not passos or not isinstance(passos, list):
-        return prompt_base
-
-    instrucao_cot = "\n\n### 6. PROCESSO DE RACIOCÍNIO (Chain of Thought)\n"
-    instrucao_cot += "Para resolver esta tarefa, execute mentalmente os seguintes passos:\n"
+def adicionar_cot(prompt_base, passos=None):
+    diretriz_cot = "\n### 6. RACIOCÍNIO PASSO A PASSO (CHAIN-OF-THOUGHT)\n"
+    if passos:
+        diretriz_cot += f"Siga estes passos para resolver o problema:\n{passos}\n"
+    else:
+        diretriz_cot += "Pense passo a passo antes de chegar à conclusão final e apresente o seu raciocínio.\n"
     
-    for i, passo in enumerate(passos, 1):
-        instrucao_cot += f"Passo {i}: {limpar_texto(passo)}\n"
-    
-    instrucao_cot += "\nInicie sua resposta detalhando o raciocínio aplicado."
-    
-    return prompt_base + instrucao_cot
+    return prompt_base + diretriz_cot

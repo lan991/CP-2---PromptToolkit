@@ -1,0 +1,7 @@
+{
+  "template_padrao": "### 1. INSTRUÇÃO\n{instrucao}\n\n### 2. CONTEXTO\n{contexto}\n\n### 3. DADOS DE ENTRADA\n{input_dados}\n\n### 4. FORMATO DE SAÍDA ESPERADO\n{formato_output}",
+  
+  "template_extração": "### OBJETIVO\nExtrair informações estruturadas de textos financeiros.\n\n### CONTEXTO TÉCNICO\n{contexto}\n\n### TEXTO PARA ANÁLISE\n{input_dados}\n\n### REGRAS DE FORMATAÇÃO\n{formato_output}\n\n### INSTRUÇÃO ESPECÍFICA\n{instrucao}",
+  
+  "template_sumarizacao": "### RESUMO EXECUTIVO\nVocê deve condensar as informações abaixo para a diretoria.\n\n### CONTEÚDO\n{input_dados}\n\n### DIRETRIZES\n{instrucao}\n\n### RESULTADO ESPERADO\n{formato_output}"
+}

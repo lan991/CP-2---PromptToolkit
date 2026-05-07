@@ -1,16 +1,68 @@
 {
   "classificacao_sentimento_mercado": [
-    {"input": "O Banco Central manteve os juros, sinalizando otimismo com a inflação.", "esperado": "OTIMISTA"},
-    {"input": "A queda nas commodities deve pressionar o Ibovespa na abertura.", "esperado": "PESSIMISTA"},
-    {"input": "O mercado aguarda a divulgação do balanço trimestral da Petrobras.", "esperado": "NEUTRO"},
-    {"input": "Indicadores de emprego vieram acima do esperado, aquecendo a economia.", "esperado": "OTIMISTA"},
-    {"input": "Incertezas políticas geram volatilidade e fuga de capital estrangeiro.", "esperado": "PESSIMISTA"}
+    {
+      "input": "Copom mantém Selic em 10,50% ao ano e sinaliza vigilância constante sobre inflação.",
+      "esperado": "NEUTRO"
+    },
+    {
+      "input": "Lucro líquido da Petrobras cai 38% no primeiro trimestre devido à queda internacional do petróleo.",
+      "esperado": "NEGATIVO"
+    },
+    {
+      "input": "Exportações brasileiras batem recorde histórico com forte demanda chinesa por commodities.",
+      "esperado": "POSITIVO"
+    },
+    {
+      "input": "Ibovespa opera em volatilidade com incertezas fiscais compensadas por alta de bancos.",
+      "esperado": "MISTO"
+    },
+    {
+      "input": "Inflação medida pelo IPCA-15 vem abaixo do teto das estimativas de mercado em maio.",
+      "esperado": "POSITIVO"
+    }
   ],
-  "extracao_ativos_financeiros": [
-    {"input": "Comprei PETR4 a R$35,00 e VALE3 a R$68,50.", "esperado": {"PETR4": "R$35,00", "VALE3": "R$68,50"}},
-    {"input": "A ação da WEGE3 subiu para R$42,00 hoje.", "esperado": {"WEGE3": "R$42,00"}},
-    {"input": "Vendi ITUB4 por R$29,00 ontem à tarde.", "esperado": {"ITUB4": "R$29,00"}},
-    {"input": "BBAS3 atingiu a marca histórica de R$55,00.", "esperado": {"BBAS3": "R$55,00"}},
-    {"input": "MGLU3 caiu para R$2,15 após o relatório.", "esperado": {"MGLU3": "R$2,15"}}
+  "extracao_dados_financeiros": [
+    {
+      "input": "A ação da VALE3 encerrou o pregão cotada a R$ 64,20, apresentando uma valorização de 2,1% no dia.",
+      "esperado": "{\"ticker\": \"VALE3\", \"preco_fechamento\": \"64,20\", \"variacao_percentual\": \"2,1%\"}"
+    },
+    {
+      "input": "O papel ITUB4 recuou para R$ 32,15 com queda de 0,85% após anúncio de dividendos.",
+      "esperado": "{\"ticker\": \"ITUB4\", \"preco_fechamento\": \"32,15\", \"variacao_percentual\": \"-0,85%\"}"
+    },
+    {
+      "input": "WEGE3 subiu forte hoje, fechando a R$ 39,90 com ganho expressivo de 3,4%.",
+      "esperado": "{\"ticker\": \"WEGE3\", \"preco_fechamento\": \"39,90\", \"variacao_percentual\": \"3,4%\"}"
+    },
+    {
+      "input": "Papéis da MGLU3 derretem 5,2% e terminam o dia valendo apenas R$ 1,45.",
+      "esperado": "{\"ticker\": \"MGLU3\", \"preco_fechamento\": \"1,45\", \"variacao_percentual\": \"-5,2%\"}"
+    },
+    {
+      "input": "BBDC4 estabiliza em R$ 13,80 com leve alta de 0,1% em dia de pouca liquidez.",
+      "esperado": "{\"ticker\": \"BBDC4\", \"preco_fechamento\": \"13,80\", \"variacao_percentual\": \"0,1%\"}"
+    }
+  ],
+  "sumarizacao_executiva": [
+    {
+      "input": "O conselho de administração da empresa aprovou hoje a emissão de debêntures no valor de R$ 2 bilhões para expansão de plantas solares no Nordeste, visando reduzir a dependência de fontes fósseis até 2030.",
+      "esperado": "* Aprovação de emissão de R$ 2 bi em debêntures\n* Foco em expansão de energia solar no NE\n* Meta de sustentabilidade para 2030"
+    },
+    {
+      "input": "A reunião do comitê de riscos decidiu elevar a provisão para devedores duvidosos em 15% após o aumento da inadimplência no setor de varejo físico durante o último trimestre de 2025.",
+      "esperado": "* Elevação de 15% na provisão para devedores\n* Impacto da inadimplência no varejo físico\n* Medida prudencial do comitê de riscos"
+    },
+    {
+      "input": "A ata do Federal Reserve indicou que a taxa de juros americana deve permanecer em patamares elevados por mais tempo do que o antecipado, devido ao mercado de trabalho ainda muito aquecido nos EUA.",
+      "esperado": "* Juros americanos altos por tempo prolongado\n* Mercado de trabalho aquecido nos EUA\n* Sinalização de cautela pelo Fed"
+    },
+    {
+      "input": "Relatórios de análise indicam que a fusão entre as duas gigantes do setor de software deve gerar sinergias de R$ 500 milhões em três anos, mas enfrenta resistência de órgãos reguladores.",
+      "esperado": "* Fusão projeta sinergia de R$ 500 mi\n* Prazo de maturação de 3 anos\n* Monitoramento de órgãos reguladores"
+    },
+    {
+      "input": "O Tesouro Direto registrou captação líquida positiva em março, impulsionado pela busca por títulos prefixados em meio à expectativa de queda futura nos juros de longo prazo.",
+      "esperado": "* Captação positiva no Tesouro Direto em março\n* Alta procura por títulos prefixados\n* Expectativa de queda nos juros longos"
+    }
   ]
 }
