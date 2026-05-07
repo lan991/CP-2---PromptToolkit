@@ -56,8 +56,7 @@ TIMEOUT_SECONDS=180
 Para iniciar os testes e gerar os gráficos, execute o comando abaixo na raiz do projeto:
 ```bash
 python main.py
-
-
+```
 
 ###5. Verificar os Resultados
 Após a execução, o toolkit criará automaticamente a pasta /output. Verifique:
