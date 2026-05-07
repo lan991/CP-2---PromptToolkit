@@ -58,7 +58,7 @@ Para iniciar os testes e gerar os gráficos, execute o comando abaixo na raiz do
 python main.py
 ```
 
-###5. Verificar os Resultados
+### 5. Verificar os Resultados
 Após a execução, o toolkit criará automaticamente a pasta /output. Verifique:
 
 output/relatorio_final.csv: Tabela com todos os dados e métricas.
