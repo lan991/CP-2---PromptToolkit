@@ -34,11 +34,13 @@ def adicionar_exemplos(prompt_base, exemplos):
     if not exemplos:
         return prompt_base
         
+    # Inicializando a variável corretamente
     secao_exemplos = "\n### 5. EXEMPLOS DE REFERÊNCIA (FEW-SHOT)\n"
+    
     for i, ex in enumerate(exemplos, 1):
         entrada = ex.get('input', 'N/A')
         saida = ex.get('esperado', 'N/A')
-        secao_examples += f"Exemplo {i}:\nEntrada: {entrada}\nSaída: {saida}\n---\n"
+        secao_exemplos += f"Exemplo {i}:\nEntrada: {entrada}\nSaída: {saida}\n---\n"
     
     return prompt_base + secao_exemplos
 

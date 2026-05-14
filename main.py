@@ -1,39 +1,71 @@
 import json
 import os
+import time
 import pandas as pd
+import tiktoken
 from dotenv import load_dotenv
-from src.llm_client import LLMClient
+from huggingface_hub import InferenceClient
+
 from src.techniques import zero_shot, few_shot, chain_of_thought, role_prompting
 from src.tasks import TASKS
 from src.evaluator import medir_acuracia
 from src.report import ReportGenerator
 
-# 1. Carregar configurações
 load_dotenv()
+
+# Configuracao do Cliente API
+HF_TOKEN = os.getenv("HF_TOKEN")
+MODEL_ID = os.getenv("LLM_MODEL", "meta-llama/Meta-Llama-3.1-70B-Instruct")
+
+if not HF_TOKEN:
+    print("Erro: HF_TOKEN nao encontrado no arquivo .env")
+    client_hf = None
+else:
+    client_hf = InferenceClient(model=MODEL_ID, token=HF_TOKEN)
 
 def carregar_json(caminho):
     with open(caminho, 'r', encoding='utf-8') as f:
         return json.load(f)
 
-def executar_toolkit():
-    client = LLMClient()
-    report = ReportGenerator()
+def chat_hf(prompt, temp=0.5):
+    if not client_hf:
+        return None
     
-    # Carregando dados e personas
+    inicio = time.time()
+    try:
+        response = client_hf.chat_completion(
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=500,
+            temperature=float(temp)
+        )
+        resposta_texto = response.choices[0].message.content
+        fim = time.time()
+        
+        enc = tiktoken.get_encoding("cl100k_base")
+        tokens_p = len(enc.encode(prompt))
+        tokens_r = len(enc.encode(resposta_texto))
+        
+        return {
+            "resposta": resposta_texto,
+            "tokens_prompt": tokens_p,
+            "tokens_resposta": tokens_r,
+            "tempo_ms": int((fim - inicio) * 1000)
+        }
+    except Exception as e:
+        print(f"Erro na API: {e}")
+        return None
+
+def executar_toolkit():
+    report = ReportGenerator()
     inputs_data = carregar_json('data/inputs.json')
     personas = carregar_json('prompts/system_prompts.json')
-    
     historico_resultados = []
 
-    # 2. Para cada TAREFA definida em tasks.py
     for task_id, task_info in TASKS.items():
-        print(f"\nIniciando Tarefa: {task_info['nome']}")
-        
-        # a. Carregar os inputs (o PDF pede 5, nosso JSON já tem 5 por tarefa)
-        exemplos_da_vez = inputs_data.get(task_id, [])
+        print(f"Tarefa: {task_info['nome']}")
+        exemplos = inputs_data.get(task_id, [])
 
-        # b. Aplicar as 4 técnicas
-        for item in exemplos_da_vez:
+        for item in exemplos:
             input_texto = item['input']
             esperado = item['esperado']
 
@@ -45,11 +77,12 @@ def executar_toolkit():
             ]
 
             for nome_tec, prompt_final in tecnicas:
-                res = client.chat(prompt_final)
+                print(f"Executando {nome_tec}...")
+                temp_atual = os.getenv("DEFAULT_TEMPERATURE", 0.5)
+                res = chat_hf(prompt_final, temp=temp_atual)
                 
                 if res:
                     acuracia = medir_acuracia(res['resposta'], esperado)
-                    
                     historico_resultados.append({
                         "tarefa": task_id,
                         "tecnica": nome_tec,
@@ -58,27 +91,26 @@ def executar_toolkit():
                         "acuracia": acuracia,
                         "tokens_totais": res['tokens_prompt'] + res['tokens_resposta'],
                         "tempo_ms": res['tempo_ms'],
-                        "temperatura": os.getenv("DEFAULT_TEMPERATURE", 0.5)
+                        "temperatura": temp_atual
                     })
 
-    # 3. Gerar relatório
-    df_geral = report.salvar_csv(historico_resultados)
-    print("\nTABELA COMPARATIVA")
-    print(df_geral.groupby(['tarefa', 'tecnica'])[['acuracia', 'tempo_ms']].mean())
-    
-    report.gerar_grafico_acuracia(df_geral)
-    report.gerar_grafico_custo(df_geral)
-    melhor_tecnica_texto = report.recomendacao_automatica(df_geral)
+    if historico_resultados:
+        df_geral = report.salvar_csv(historico_resultados)
+        print("\nResultados Consolidados:")
+        print(df_geral.groupby(['tarefa', 'tecnica'])[['acuracia', 'tempo_ms']].mean())
+        
+        report.gerar_grafico_acuracia(df_geral)
+        report.gerar_grafico_custo(df_geral)
+        report.recomendacao_automatica(df_geral)
 
-    # 4. Executar teste de temperatura (0.1, 0.5, 1.0) no melhor prompt
-    print("\nIniciando Teste de Temperatura no melhor cenário...")
-    teste_input = exemplos_da_vez[0]['input']
-    temperaturas = [0.1, 0.5, 1.0]
-    
-    for temp in temperaturas:
-        os.environ["DEFAULT_TEMPERATURE"] = str(temp)
-        res_temp = client.chat(zero_shot(task_info, teste_input)) # Usando a técnica base
-        print(f"Temp {temp}: {res_temp['resposta'][:50]}... (Tokens: {res_temp['tokens_resposta']})")
+        print("\nTeste de Variacao de Temperatura:")
+        teste_input = exemplos[0]['input']
+        for temp in [0.1, 0.5, 1.0]:
+            res_temp = chat_hf(zero_shot(task_info, teste_input), temp=temp)
+            if res_temp:
+                print(f"Temp {temp}: {res_temp['resposta'][:50]}...")
+    else:
+        print("Falha ao processar resultados.")
 
 if __name__ == "__main__":
     executar_toolkit()

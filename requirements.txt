@@ -1,5 +1,7 @@
-python-dotenv==1.0.1
-requests==2.31.0
-pandas==2.2.0
-matplotlib==3.8.3
-tiktoken==0.6.0
+huggingface_hub
+python-dotenv
+pandas
+tiktoken
+matplotlib
+scikit-learn
+sentence-transformers
