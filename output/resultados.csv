@@ -1,0 +1,195 @@
+tarefa,tecnica,input,resposta,acuracia,tokens_totais,tempo_ms,temperatura
+classificacao_sentimento_mercado,Zero-Shot,"Copom mantém Selic em 10,50% ao ano e sinaliza vigilância constante sobre inflação.",MISTO,0.0,142,3478,0.3
+classificacao_sentimento_mercado,Few-Shot,"Copom mantém Selic em 10,50% ao ano e sinaliza vigilância constante sobre inflação.",NEGATIVO,0.0,223,2212,0.3
+classificacao_sentimento_mercado,Chain-of-Thought,"Copom mantém Selic em 10,50% ao ano e sinaliza vigilância constante sobre inflação.",MISTO,0.0,229,2617,0.3
+classificacao_sentimento_mercado,Role-Prompting,"Copom mantém Selic em 10,50% ao ano e sinaliza vigilância constante sobre inflação.",NEGATIVO,0.0,244,1192,0.3
+classificacao_sentimento_mercado,Zero-Shot,Lucro líquido da Petrobras cai 38% no primeiro trimestre devido à queda internacional do petróleo.,NEGATIVO,1.0,143,876,0.3
+classificacao_sentimento_mercado,Few-Shot,Lucro líquido da Petrobras cai 38% no primeiro trimestre devido à queda internacional do petróleo.,NEGATIVO,1.0,224,1261,0.3
+classificacao_sentimento_mercado,Chain-of-Thought,Lucro líquido da Petrobras cai 38% no primeiro trimestre devido à queda internacional do petróleo.,NEGATIVO,1.0,230,1141,0.3
+classificacao_sentimento_mercado,Role-Prompting,Lucro líquido da Petrobras cai 38% no primeiro trimestre devido à queda internacional do petróleo.,NEGATIVO,1.0,245,995,0.3
+classificacao_sentimento_mercado,Zero-Shot,Exportações brasileiras batem recorde histórico com forte demanda chinesa por commodities.,POSITIVO,1.0,135,978,0.3
+classificacao_sentimento_mercado,Few-Shot,Exportações brasileiras batem recorde histórico com forte demanda chinesa por commodities.,POSITIVO,1.0,216,972,0.3
+classificacao_sentimento_mercado,Chain-of-Thought,Exportações brasileiras batem recorde histórico com forte demanda chinesa por commodities.,POSITIVO,1.0,222,1020,0.3
+classificacao_sentimento_mercado,Role-Prompting,Exportações brasileiras batem recorde histórico com forte demanda chinesa por commodities.,POSITIVO,1.0,237,1291,0.3
+classificacao_sentimento_mercado,Zero-Shot,Ibovespa opera em volatilidade com incertezas fiscais compensadas por alta de bancos.,MISTO,1.0,142,1190,0.3
+classificacao_sentimento_mercado,Few-Shot,Ibovespa opera em volatilidade com incertezas fiscais compensadas por alta de bancos.,MISTO,1.0,223,1544,0.3
+classificacao_sentimento_mercado,Chain-of-Thought,Ibovespa opera em volatilidade com incertezas fiscais compensadas por alta de bancos.,MISTO,1.0,229,1249,0.3
+classificacao_sentimento_mercado,Role-Prompting,Ibovespa opera em volatilidade com incertezas fiscais compensadas por alta de bancos.,MISTO,1.0,244,1241,0.3
+classificacao_sentimento_mercado,Zero-Shot,Inflação medida pelo IPCA-15 vem abaixo do teto das estimativas de mercado em maio.,POSITIVO,1.0,138,1083,0.3
+classificacao_sentimento_mercado,Few-Shot,Inflação medida pelo IPCA-15 vem abaixo do teto das estimativas de mercado em maio.,POSITIVO,1.0,219,1237,0.3
+classificacao_sentimento_mercado,Chain-of-Thought,Inflação medida pelo IPCA-15 vem abaixo do teto das estimativas de mercado em maio.,POSITIVO,1.0,225,1059,0.3
+classificacao_sentimento_mercado,Role-Prompting,Inflação medida pelo IPCA-15 vem abaixo do teto das estimativas de mercado em maio.,POSITIVO,1.0,240,1090,0.3
+extracao_dados_financeiros,Zero-Shot,"A ação da VALE3 encerrou o pregão cotada a R$ 64,20, apresentando uma valorização de 2,1% no dia.","```json
+{
+  ""ticker"": ""VALE3"",
+  ""preco_fechamento"": 64.20,
+  ""variacao_percentual"": 2.1
+}
+```",0.0,180,1532,0.3
+extracao_dados_financeiros,Few-Shot,"A ação da VALE3 encerrou o pregão cotada a R$ 64,20, apresentando uma valorização de 2,1% no dia.","{""ticker"": ""VALE3"", ""preco_fechamento"": ""64,20"", ""variacao_percentual"": ""2,1%""}",1.0,260,1443,0.3
+extracao_dados_financeiros,Chain-of-Thought,"A ação da VALE3 encerrou o pregão cotada a R$ 64,20, apresentando uma valorização de 2,1% no dia.","```json
+{
+  ""ticker"": ""VALE3"",
+  ""preco_fechamento"": 64.20,
+  ""variacao_percentual"": 2.1
+}
+```",0.0,265,1993,0.3
+extracao_dados_financeiros,Role-Prompting,"A ação da VALE3 encerrou o pregão cotada a R$ 64,20, apresentando uma valorização de 2,1% no dia.","```json
+{
+  ""ticker"": ""VALE3"",
+  ""preco_fechamento"": 64.20,
+  ""variacao_percentual"": 2.1
+}
+```",0.0,282,1417,0.3
+extracao_dados_financeiros,Zero-Shot,"O papel ITUB4 recuou para R$ 32,15 com queda de 0,85% após anúncio de dividendos.","```json
+{
+  ""ticker"": ""ITUB4"",
+  ""preco_fechamento"": 32.15,
+  ""variacao_percentual"": -0.85
+}
+```",0.0,175,1619,0.3
+extracao_dados_financeiros,Few-Shot,"O papel ITUB4 recuou para R$ 32,15 com queda de 0,85% após anúncio de dividendos.","{""ticker"": ""ITUB4"", ""preco_fechamento"": ""32,15"", ""variacao_percentual"": ""-0,85%""}",1.0,255,2238,0.3
+extracao_dados_financeiros,Chain-of-Thought,"O papel ITUB4 recuou para R$ 32,15 com queda de 0,85% após anúncio de dividendos.","```json
+{
+  ""ticker"": ""ITUB4"",
+  ""preco_fechamento"": 32.15,
+  ""variacao_percentual"": -0.85
+}
+```",0.0,260,2525,0.3
+extracao_dados_financeiros,Role-Prompting,"O papel ITUB4 recuou para R$ 32,15 com queda de 0,85% após anúncio de dividendos.","```json
+{
+  ""ticker"": ""ITUB4"",
+  ""preco_fechamento"": 32.15,
+  ""variacao_percentual"": -0.85
+}
+```",0.0,277,1460,0.3
+extracao_dados_financeiros,Zero-Shot,"WEGE3 subiu forte hoje, fechando a R$ 39,90 com ganho expressivo de 3,4%.","```json
+{
+  ""ticker"": ""WEGE3"",
+  ""preco_fechamento"": 39.90,
+  ""variacao_percentual"": 3.4
+}
+```",0.0,174,1716,0.3
+extracao_dados_financeiros,Few-Shot,"WEGE3 subiu forte hoje, fechando a R$ 39,90 com ganho expressivo de 3,4%.","{""ticker"": ""WEGE3"", ""preco_fechamento"": ""39,90"", ""variacao_percentual"": ""3,4%""}",1.0,254,1532,0.3
+extracao_dados_financeiros,Chain-of-Thought,"WEGE3 subiu forte hoje, fechando a R$ 39,90 com ganho expressivo de 3,4%.","```json
+{
+  ""ticker"": ""WEGE3"",
+  ""preco_fechamento"": 39.90,
+  ""variacao_percentual"": 3.4
+}
+```",0.0,259,1384,0.3
+extracao_dados_financeiros,Role-Prompting,"WEGE3 subiu forte hoje, fechando a R$ 39,90 com ganho expressivo de 3,4%.","```json
+{
+  ""ticker"": ""WEGE3"",
+  ""preco_fechamento"": 39.90,
+  ""variacao_percentual"": 3.4
+}
+```",0.0,276,1648,0.3
+extracao_dados_financeiros,Zero-Shot,"Papéis da MGLU3 derretem 5,2% e terminam o dia valendo apenas R$ 1,45.","```json
+{
+  ""ticker"": ""MGLU3"",
+  ""preco_fechamento"": 1.45,
+  ""variacao_percentual"": -5.2
+}
+```",0.0,175,2321,0.3
+extracao_dados_financeiros,Few-Shot,"Papéis da MGLU3 derretem 5,2% e terminam o dia valendo apenas R$ 1,45.","{
+  ""ticker"": ""MGLU3"",
+  ""preco_fechamento"": ""1,45"",
+  ""variacao_percentual"": ""-5,2%""
+}",0.0,259,1558,0.3
+extracao_dados_financeiros,Chain-of-Thought,"Papéis da MGLU3 derretem 5,2% e terminam o dia valendo apenas R$ 1,45.","```json
+{
+  ""ticker"": ""MGLU3"",
+  ""preco_fechamento"": 1.45,
+  ""variacao_percentual"": -5.2
+}
+```",0.0,260,2604,0.3
+extracao_dados_financeiros,Role-Prompting,"Papéis da MGLU3 derretem 5,2% e terminam o dia valendo apenas R$ 1,45.","```json
+{
+  ""ticker"": ""MGLU3"",
+  ""preco_fechamento"": 1.45,
+  ""variacao_percentual"": -5.2
+}
+```",0.0,277,1755,0.3
+extracao_dados_financeiros,Zero-Shot,"BBDC4 estabiliza em R$ 13,80 com leve alta de 0,1% em dia de pouca liquidez.","```json
+{
+  ""ticker"": ""BBDC4"",
+  ""preco_fechamento"": 13.80,
+  ""variacao_percentual"": 0.1
+}
+```",0.0,174,2555,0.3
+extracao_dados_financeiros,Few-Shot,"BBDC4 estabiliza em R$ 13,80 com leve alta de 0,1% em dia de pouca liquidez.","{""ticker"": ""BBDC4"", ""preco_fechamento"": ""13,80"", ""variacao_percentual"": ""0,1%""}",1.0,254,1503,0.3
+extracao_dados_financeiros,Chain-of-Thought,"BBDC4 estabiliza em R$ 13,80 com leve alta de 0,1% em dia de pouca liquidez.","```json
+{
+  ""ticker"": ""BBDC4"",
+  ""preco_fechamento"": 13.80,
+  ""variacao_percentual"": 0.1
+}
+```",0.0,259,1847,0.3
+extracao_dados_financeiros,Role-Prompting,"BBDC4 estabiliza em R$ 13,80 com leve alta de 0,1% em dia de pouca liquidez.","```json
+{
+  ""ticker"": ""BBDC4"",
+  ""preco_fechamento"": 13.80,
+  ""variacao_percentual"": 0.1
+}
+```",0.0,276,1640,0.3
+sumarizacao_executiva,Zero-Shot,"O conselho de administração da empresa aprovou hoje a emissão de debêntures no valor de R$ 2 bilhões para expansão de plantas solares no Nordeste, visando reduzir a dependência de fontes fósseis até 2030.","- Aprovação da emissão de debêntures de **R$ 2 bi** para financiar a expansão das plantas solares no Nordeste.  
+- Objetivo estratégico: **reduzir a dependência de fontes fósseis** e avançar na meta de descarbonização até **2030**.  
+- Impacto esperado: aumento da capacidade de geração renovável, fortalecimento da posição de mercado e alinhamento com as diretrizes ESG da empresa.",0.0,276,1501,0.3
+sumarizacao_executiva,Few-Shot,"O conselho de administração da empresa aprovou hoje a emissão de debêntures no valor de R$ 2 bilhões para expansão de plantas solares no Nordeste, visando reduzir a dependência de fontes fósseis até 2030.","* Aprovação da emissão de debêntures no valor de R$ 2 bi para financiar a expansão de plantas solares no Nordeste.  
+* Objetivo estratégico: reduzir a dependência de fontes fósseis da empresa até 2030.  
+* Alinhamento com a meta de sustentabilidade e diversificação da matriz energética da companhia.",0.0,327,1548,0.3
+sumarizacao_executiva,Chain-of-Thought,"O conselho de administração da empresa aprovou hoje a emissão de debêntures no valor de R$ 2 bilhões para expansão de plantas solares no Nordeste, visando reduzir a dependência de fontes fósseis até 2030.","- Aprovação da emissão de debêntures de **R$ 2 bi** para financiar a expansão das plantas solares no Nordeste.  
+- Objetivo estratégico: **reduzir a dependência de fontes fósseis** e avançar na meta de energia limpa até **2030**.  
+- Impacto esperado: aumento da capacidade de geração solar, diversificação do mix energético e fortalecimento da posição da empresa no mercado de renováveis.",0.0,343,1305,0.3
+sumarizacao_executiva,Role-Prompting,"O conselho de administração da empresa aprovou hoje a emissão de debêntures no valor de R$ 2 bilhões para expansão de plantas solares no Nordeste, visando reduzir a dependência de fontes fósseis até 2030.","- Aprovação da emissão de debêntures de R$ 2 bi para financiar a expansão das plantas solares no Nordeste, alinhada à estratégia de descarbonização da companhia até 2030.  
+- Destinação dos recursos: construção de novas unidades fotovoltaicas, upgrade de infraestrutura de transmissão e contratação de serviços de EPC, com prazo de implementação de 24 meses.  
+- Impacto esperado: aumento da capacidade instalada em ~30 %, redução da participação de geração fóssil em ~15 % no mix energético da empresa, e melhoria da alavancagem financeira com dívida de longo prazo atrelada a ativos de energia renovável.",0.0,440,1651,0.3
+sumarizacao_executiva,Zero-Shot,A reunião do comitê de riscos decidiu elevar a provisão para devedores duvidosos em 15% após o aumento da inadimplência no setor de varejo físico durante o último trimestre de 2025.,"- **Decisão:** Elevar a provisão para devedores duvidosos em **15%**.  
+- **Motivo:** Aumento significativo da inadimplência no **setor de varejo físico** no último trimestre de 2025.  
+- **Impacto esperado:** Reforço da cobertura de risco e ajuste nos resultados financeiros projetados para o próximo período.",0.0,243,1327,0.3
+sumarizacao_executiva,Few-Shot,A reunião do comitê de riscos decidiu elevar a provisão para devedores duvidosos em 15% após o aumento da inadimplência no setor de varejo físico durante o último trimestre de 2025.,"* Elevação da provisão para devedores duvidosos em **15%**  
+* Motivo: aumento da inadimplência no setor de varejo físico no **4º trimestre de 2025**  
+* Decisão aprovada pelo Comitê de Riscos para mitigar o risco creditício​",0.0,305,1503,0.3
+sumarizacao_executiva,Chain-of-Thought,A reunião do comitê de riscos decidiu elevar a provisão para devedores duvidosos em 15% após o aumento da inadimplência no setor de varejo físico durante o último trimestre de 2025.,"- **Decisão:** Elevar a provisão para devedores duvidosos em **15%**.  
+- **Motivo:** Aumento significativo da inadimplência no setor de varejo físico no último trimestre de 2025.  
+- **Impacto esperado:** Reforço da cobertura de risco e ajuste dos resultados financeiros para refletir a nova realidade de crédito.",0.0,316,1257,0.3
+sumarizacao_executiva,Role-Prompting,A reunião do comitê de riscos decidiu elevar a provisão para devedores duvidosos em 15% após o aumento da inadimplência no setor de varejo físico durante o último trimestre de 2025.,"- **Decisão do Comitê de Riscos:** Aprovação de aumento de 15 % na provisão para devedores duvidosos (PDD), refletindo a deterioração de crédito observada.  
+- **Motivo da Elevação:** Crescimento da inadimplência no segmento de varejo físico no último trimestre de 2025, com taxa de default acima da média setorial (≈ 4,2 % vs. 2,8 % histórico).  
+- **Impacto Financeiro:** Aumento esperado de R$ XX milhões nas despesas de provisão, reduzindo o lucro antes do imposto (EBIT) e pressionando a margem líquida da instituição no próximo exercício.",0.0,437,1746,0.3
+sumarizacao_executiva,Zero-Shot,"A ata do Federal Reserve indicou que a taxa de juros americana deve permanecer em patamares elevados por mais tempo do que o antecipado, devido ao mercado de trabalho ainda muito aquecido nos EUA.","- O Federal Reserve sinaliza que a taxa de juros dos EUA permanecerá alta por um período mais prolongado que o previsto.  
+- A decisão se baseia na persistência de um mercado de trabalho ainda muito aquecido, indicando pressões inflacionárias contínuas.  
+- Implicações: custos de financiamento mais elevados para empresas e consumidores; necessidade de revisão de projeções de investimento e fluxo de caixa.",0.0,246,1350,0.3
+sumarizacao_executiva,Few-Shot,"A ata do Federal Reserve indicou que a taxa de juros americana deve permanecer em patamares elevados por mais tempo do que o antecipado, devido ao mercado de trabalho ainda muito aquecido nos EUA.","- A taxa de juros dos EUA deverá permanecer em níveis elevados por um período mais prolongado do que o previsto inicialmente.  
+- O principal motivo é a persistência de um mercado de trabalho ainda muito aquecido, que mantém pressões inflacionárias.  
+- Implicações: custos de financiamento mais altos para empresas e consumidores, potencial desaceleração do crescimento econômico e necessidade de monitorar de perto a evolução do emprego ao planejar investimentos e estratégias de crédito.",0.0,343,1549,0.3
+sumarizacao_executiva,Chain-of-Thought,"A ata do Federal Reserve indicou que a taxa de juros americana deve permanecer em patamares elevados por mais tempo do que o antecipado, devido ao mercado de trabalho ainda muito aquecido nos EUA.","- O Federal Reserve indicou que a taxa de juros dos EUA permanecerá em níveis elevados por um período mais longo do que o previsto.  
+- A decisão se baseia na persistência de um mercado de trabalho ainda muito aquecido, sinalizando pressões inflacionárias contínuas.  
+- Consequência para a empresa: manutenção de custos de financiamento mais altos e necessidade de rever projeções de investimento e fluxo de caixa diante de condições de crédito mais restritas.",0.0,331,1808,0.3
+sumarizacao_executiva,Role-Prompting,"A ata do Federal Reserve indicou que a taxa de juros americana deve permanecer em patamares elevados por mais tempo do que o antecipado, devido ao mercado de trabalho ainda muito aquecido nos EUA.","- O Fed sinaliza que a taxa de juros dos EUA permanecerá em níveis elevados por um período mais prolongado, refletindo a necessidade de conter pressões inflacionárias persistentes.  
+- A decisão está fundamentada na avaliação de que o mercado de trabalho americano ainda está excessivamente aquecido, com indicadores de emprego robustos e salários em alta, o que sustenta a pressão sobre a inflação.  
+- Expectativas de política monetária mais restritiva podem impactar o custo de capital global, pressionar valuations de ativos de risco e exigir ajustes estratégicos nos portfolios de renda variável.",0.0,392,2322,0.3
+sumarizacao_executiva,Zero-Shot,"Relatórios de análise indicam que a fusão entre as duas gigantes do setor de software deve gerar sinergias de R$ 500 milhões em três anos, mas enfrenta resistência de órgãos reguladores.","- **Sinergia projetada:** a fusão deve gerar R$ 500 milhões em sinergias operacionais nos próximos 3 anos.  
+- **Risco regulatório:** há forte resistência de órgãos reguladores, o que pode atrasar ou impedir a conclusão do negócio.  
+- **Decisão crítica:** avaliar estratégias de mitigação (ex.: concessões, lobby, estruturação de ativos) versus o potencial de retorno financeiro da sinergia.",0.0,266,1725,0.3
+sumarizacao_executiva,Few-Shot,"Relatórios de análise indicam que a fusão entre as duas gigantes do setor de software deve gerar sinergias de R$ 500 milhões em três anos, mas enfrenta resistência de órgãos reguladores.","* Sinergias previstas: R$ 500 mi em até 3 anos com a fusão das duas gigantes de software.  
+* Obstáculo regulatório: resistência significativa dos órgãos de controle, exigindo plano de compliance e negociação.  
+* Decisão requerida: aprovação de estratégia de mitigação de risco regulatório para viabilizar a operação.",0.0,317,1827,0.3
+sumarizacao_executiva,Chain-of-Thought,"Relatórios de análise indicam que a fusão entre as duas gigantes do setor de software deve gerar sinergias de R$ 500 milhões em três anos, mas enfrenta resistência de órgãos reguladores.","- **Sinergia projetada:** a fusão deve gerar R$ 500 mi de sinergias operacionais e financeiras nos próximos três anos.  
+- **Risco regulatório:** há forte resistência dos órgãos reguladores, o que pode atrasar ou impedir a conclusão da operação.  
+- **Ação recomendada:** iniciar imediato plano de engajamento regulatório e contingência de mitigação de risco para assegurar a viabilidade da fusão.",0.0,327,1722,0.3
+sumarizacao_executiva,Role-Prompting,"Relatórios de análise indicam que a fusão entre as duas gigantes do setor de software deve gerar sinergias de R$ 500 milhões em três anos, mas enfrenta resistência de órgãos reguladores.","- **Sinergias projetadas:** A fusão das duas líderes de software deve gerar aproximadamente R$ 500 mi em sinergias operacionais e de custo ao longo de três anos, impulsionando margens EBITDA e potencial de geração de caixa.  
+- **Risco regulatório:** Existe resistência significativa dos órgãos de defesa da concorrência, o que pode acarretar exigências de desinvestimentos ou condicionantes que retardem a conclusão da operação.  
+- **Impacto para o valuation:** A materialização das sinergias está incorporada nas projeções de fluxo de caixa descontado; porém, a incerteza regulatória introduz um risco de ajuste de múltiplos de mercado e de revisão de premissas de crescimento.",0.0,436,1589,0.3
+sumarizacao_executiva,Zero-Shot,"O Tesouro Direto registrou captação líquida positiva em março, impulsionado pela busca por títulos prefixados em meio à expectativa de queda futura nos juros de longo prazo.","- **Captação líquida positiva em março:** O Tesouro Direto registrou aumento de recursos, indicando maior adesão dos investidores.  
+- **Preferência por títulos prefixados:** A demanda foi impulsionada pela busca de rentabilidade fixa, refletindo a expectativa de queda dos juros de longo prazo.  
+- **Implicação estratégica:** O cenário sugere oportunidade de ampliar a oferta de títulos prefixados e reforçar a comunicação sobre a perspectiva de redução da taxa Selic, alinhando a política de captação aos objetivos de custo de dívida mais baixo.",0.0,292,1917,0.3
+sumarizacao_executiva,Few-Shot,"O Tesouro Direto registrou captação líquida positiva em março, impulsionado pela busca por títulos prefixados em meio à expectativa de queda futura nos juros de longo prazo.","* Captação líquida positiva no Tesouro Direto em março, indicando aumento de recursos captados.  
+* Demanda concentrada em títulos prefixados, refletindo a expectativa de queda dos juros de longo prazo.  
+* Recomenda‑se monitorar a evolução das expectativas de taxa e avaliar a ampliação de emissões prefixadas para aproveitar o cenário favorável.",0.0,313,2048,0.3
+sumarizacao_executiva,Chain-of-Thought,"O Tesouro Direto registrou captação líquida positiva em março, impulsionado pela busca por títulos prefixados em meio à expectativa de queda futura nos juros de longo prazo.","- Captação líquida do Tesouro Direto em março foi positiva, indicando aumento de recursos investidos.  
+- O principal motor foi a forte demanda por títulos prefixados, refletindo a expectativa de queda dos juros de longo prazo.  
+- Recomenda‑se monitorar a evolução das expectativas de taxa e avaliar oportunidades de alocação em ativos prefixados.",0.0,302,2100,0.3
+sumarizacao_executiva,Role-Prompting,"O Tesouro Direto registrou captação líquida positiva em março, impulsionado pela busca por títulos prefixados em meio à expectativa de queda futura nos juros de longo prazo.","- **Captação líquida positiva em março:** O Tesouro Direto registrou fluxo de entrada superior às saídas, indicando renovado interesse dos investidores no mercado de títulos públicos.  
+- **Preferência por títulos prefixados:** A demanda foi liderada por papéis prefixados, refletindo a estratégia de proteção contra a expectativa de queda dos juros de longo prazo.  
+- **Perspectiva de queda dos juros de longo prazo:** O cenário macroeconômico sinaliza redução da taxa Selic e dos juros de longo prazo, reforçando a atratividade dos títulos prefixados como hedge contra a desvalorização de rentabilidades futuras.",0.0,412,2153,0.3

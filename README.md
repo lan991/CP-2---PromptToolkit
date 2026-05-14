@@ -6,21 +6,22 @@ Este projeto é um toolkit de Engenharia de Prompt desenvolvido para o **CP2 (Ch
 
 Antes de iniciar, certifique-se de ter instalado:
 
-* **Python 3.10 ou superior**: O projeto utiliza recursos de tipagem e manipulação de dicionários que exigem versões recentes.
-* **Ollama**: O motor de execução de modelos locais deve estar instalado e **ativo** (verifique o ícone na barra de tarefas).
-* **Modelo gpt-oss:120b**: É necessário realizar o pull do modelo via terminal antes da execução:
-    ```bash
-    ollama pull gpt-oss:120b
-    ```
-    *(Nota: Caso seu hardware não suporte o modelo de 120b, você pode alterar o `LLM_MODEL` no arquivo `.env` para outro modelo como `llama3`).*
-* **Bibliotecas de Dados**: O toolkit exige as dependências listadas no `requirements.txt` (Pandas, Matplotlib, Tiktoken).
+* **Python 3.10 ou superior**: O projeto utiliza recursos de tipagem e manipulação de dados que exigem versões recentes.
+
+* **Ollama API Key**: É necessário realizar o login no site oficial [Ollama.com](https://ollama.com), acessar as configurações (**Settings > Keys**) e gerar uma chave de API para autenticação no modelo remoto.
+
+* **Modelo gpt-oss:120b**: O projeto utiliza este modelo via infraestrutura de nuvem, dispensando a necessidade de download local (pull) ou hardware de alta performance.
+
+* **Bibliotecas Necessárias**: O toolkit exige as dependências listadas no `requirements.txt` (ollama, pandas, matplotlib, tiktoken e python-dotenv).
 
 ## Como Rodar o Projeto
 
 Siga os passos abaixo para preparar o ambiente e executar o toolkit:
 
 ### 1. Clonar e Preparar o Ambiente
+
 Recomendamos o uso de um ambiente virtual (venv) para isolar as dependências e evitar conflitos no sistema:
+
 ```bash
 # Criar o ambiente virtual
 python -m venv venv
@@ -30,8 +31,10 @@ python -m venv venv
 
 # Ativar o ambiente (Linux/Mac)
 source venv/bin/activate
-```
 
+# Instalar todas as dependências necessárias
+pip install -r requirements.txt
+```
 
 ### 2. Instalar Dependências
 
@@ -46,8 +49,8 @@ O sistema precisa saber onde o Ollama está rodando.
 1. Na raiz do projeto, crie um arquivo chamado `.env`.
 2. Adicione as seguintes configurações:
 ```text
-OLLAMA_HOST=http://localhost:11434/api/chat
-LLM_MODEL=gpt-oss:120b
+OLLAMA_API_KEY=insira_sua_chave_gerada_no_site
+DEFAULT_TEMPERATURE=0.3
 TIMEOUT_SECONDS=180
 ```
 
